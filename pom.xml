@@ -6,6 +6,12 @@
 	<groupId>cn.mazekkkk.cloud</groupId>
 	<artifactId>product</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<modules>
+		<module>product-application</module>
+		<module>product-service</module>
+		<module>product-dao</module>
+		<module>product-common</module>
+	</modules>
 
 	<packaging>pom</packaging>
 
@@ -20,7 +26,7 @@
 	</parent>
 
 	<properties>
-		<start-class>cn.mazekkkk.cloud.product.controller.MazekkkkApplication</start-class>
+		<start-class>cn.mazekkkk.cloud.product.application.MazekkkkApplication</start-class>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
 	</properties>
