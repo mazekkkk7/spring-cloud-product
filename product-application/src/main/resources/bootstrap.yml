@@ -6,6 +6,8 @@ spring:
       uri: http://localhost:9921
       profile: dev
       label: master
+      username: user
+      password: 60361173b
   rabbitmq:
     host: localhost
     port: 5672

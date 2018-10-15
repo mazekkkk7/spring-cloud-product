@@ -11,14 +11,24 @@
 
     <artifactId>product-service</artifactId>
 
-    <dependencyManagement>
+    <!--<dependencyManagement>-->
         <dependencies>
             <dependency>
                 <groupId>cn.mazekkkk.cloud</groupId>
-                <artifactId>product-dao</artifactId>
+                <artifactId>product-dao-common</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.mazekkkk.cloud</groupId>
+                <artifactId>product-dao-mapper</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.mazekkkk.cloud</groupId>
+                <artifactId>product-common</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
         </dependencies>
-    </dependencyManagement>
+    <!--</dependencyManagement>-->
 
 </project>

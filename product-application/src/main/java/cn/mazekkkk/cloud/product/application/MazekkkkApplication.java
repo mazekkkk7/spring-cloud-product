@@ -1,8 +1,10 @@
 package cn.mazekkkk.cloud.product.application;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.jms.annotation.EnableJms;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -17,7 +19,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableScheduling
 @EnableAutoConfiguration
 @EnableJms
+@RefreshScope
 @ComponentScan(basePackages = {"cn.mazekkkk.cloud.product"})
+@MapperScan("cn.mazekkkk.cloud.product.dao.mapper")
 public class MazekkkkApplication {
 
     public static void main(String[] args) {
