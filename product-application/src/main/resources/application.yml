@@ -1,5 +1,2 @@
 server:
   port: 8088
-mybatis:
-  type-aliases-package: cn.mazekkkk.cloud.product.dao.mapper
-  mapper-locations: classpath:/mybatis/mapper/**/*.xml
