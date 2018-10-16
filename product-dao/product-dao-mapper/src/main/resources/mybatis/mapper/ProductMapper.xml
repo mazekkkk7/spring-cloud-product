@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.mazekkkk.cloud.product.dao.mapper.SUserMapper">
-  <resultMap id="BaseResultMap" type="cn.mazekkkk.cloud.product.dao.common.SUser">
+<mapper namespace="cn.mazekkkk.cloud.product.dao.mapper.ProductMapper">
+  <resultMap id="BaseResultMap" type="cn.mazekkkk.cloud.product.dao.common.Product">
     <id column="id" jdbcType="OTHER" property="id" />
     <result column="name" jdbcType="OTHER" property="name" />
-    <result column="email" jdbcType="OTHER" property="email" />
-    <result column="password" jdbcType="OTHER" property="password" />
-    <result column="dob" jdbcType="OTHER" property="dob" />
+    <result column="prod_description" jdbcType="OTHER" property="prodDescription" />
+    <result column="price" jdbcType="OTHER" property="price" />
+    <result column="create_datetime" jdbcType="OTHER" property="createDatetime" />
+    <result column="status" jdbcType="OTHER" property="status" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -67,15 +68,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, email, password, dob
+    id, name, prod_description, price, create_datetime, status
   </sql>
-  <select id="selectByExample" parameterType="cn.mazekkkk.cloud.product.dao.common.SUserExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="cn.mazekkkk.cloud.product.dao.common.ProductExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from s_user
+    from product
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -86,64 +87,70 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from s_user
+    from product
     where id = #{id,jdbcType=OTHER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from s_user
+    delete from product
     where id = #{id,jdbcType=OTHER}
   </delete>
-  <delete id="deleteByExample" parameterType="cn.mazekkkk.cloud.product.dao.common.SUserExample">
-    delete from s_user
+  <delete id="deleteByExample" parameterType="cn.mazekkkk.cloud.product.dao.common.ProductExample">
+    delete from product
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.mazekkkk.cloud.product.dao.common.SUser" useGeneratedKeys="true">
-    insert into s_user (name, email, password, 
-      dob)
-    values (#{name,jdbcType=OTHER}, #{email,jdbcType=OTHER}, #{password,jdbcType=OTHER}, 
-      #{dob,jdbcType=OTHER})
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.mazekkkk.cloud.product.dao.common.Product" useGeneratedKeys="true">
+    insert into product (name, prod_description, price, 
+      create_datetime, status)
+    values (#{name,jdbcType=OTHER}, #{prodDescription,jdbcType=OTHER}, #{price,jdbcType=OTHER}, 
+      #{createDatetime,jdbcType=OTHER}, #{status,jdbcType=OTHER})
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="cn.mazekkkk.cloud.product.dao.common.SUser" useGeneratedKeys="true">
-    insert into s_user
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="cn.mazekkkk.cloud.product.dao.common.Product" useGeneratedKeys="true">
+    insert into product
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="name != null">
         name,
       </if>
-      <if test="email != null">
-        email,
+      <if test="prodDescription != null">
+        prod_description,
       </if>
-      <if test="password != null">
-        password,
+      <if test="price != null">
+        price,
       </if>
-      <if test="dob != null">
-        dob,
+      <if test="createDatetime != null">
+        create_datetime,
+      </if>
+      <if test="status != null">
+        status,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="name != null">
         #{name,jdbcType=OTHER},
       </if>
-      <if test="email != null">
-        #{email,jdbcType=OTHER},
+      <if test="prodDescription != null">
+        #{prodDescription,jdbcType=OTHER},
       </if>
-      <if test="password != null">
-        #{password,jdbcType=OTHER},
+      <if test="price != null">
+        #{price,jdbcType=OTHER},
       </if>
-      <if test="dob != null">
-        #{dob,jdbcType=OTHER},
+      <if test="createDatetime != null">
+        #{createDatetime,jdbcType=OTHER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=OTHER},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="cn.mazekkkk.cloud.product.dao.common.SUserExample" resultType="java.lang.Long">
-    select count(*) from s_user
+  <select id="countByExample" parameterType="cn.mazekkkk.cloud.product.dao.common.ProductExample" resultType="java.lang.Long">
+    select count(*) from product
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update s_user
+    update product
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=OTHER},
@@ -151,14 +158,17 @@
       <if test="record.name != null">
         name = #{record.name,jdbcType=OTHER},
       </if>
-      <if test="record.email != null">
-        email = #{record.email,jdbcType=OTHER},
+      <if test="record.prodDescription != null">
+        prod_description = #{record.prodDescription,jdbcType=OTHER},
       </if>
-      <if test="record.password != null">
-        password = #{record.password,jdbcType=OTHER},
+      <if test="record.price != null">
+        price = #{record.price,jdbcType=OTHER},
       </if>
-      <if test="record.dob != null">
-        dob = #{record.dob,jdbcType=OTHER},
+      <if test="record.createDatetime != null">
+        create_datetime = #{record.createDatetime,jdbcType=OTHER},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=OTHER},
       </if>
     </set>
     <if test="_parameter != null">
@@ -166,40 +176,45 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update s_user
+    update product
     set id = #{record.id,jdbcType=OTHER},
       name = #{record.name,jdbcType=OTHER},
-      email = #{record.email,jdbcType=OTHER},
-      password = #{record.password,jdbcType=OTHER},
-      dob = #{record.dob,jdbcType=OTHER}
+      prod_description = #{record.prodDescription,jdbcType=OTHER},
+      price = #{record.price,jdbcType=OTHER},
+      create_datetime = #{record.createDatetime,jdbcType=OTHER},
+      status = #{record.status,jdbcType=OTHER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.mazekkkk.cloud.product.dao.common.SUser">
-    update s_user
+  <update id="updateByPrimaryKeySelective" parameterType="cn.mazekkkk.cloud.product.dao.common.Product">
+    update product
     <set>
       <if test="name != null">
         name = #{name,jdbcType=OTHER},
       </if>
-      <if test="email != null">
-        email = #{email,jdbcType=OTHER},
+      <if test="prodDescription != null">
+        prod_description = #{prodDescription,jdbcType=OTHER},
       </if>
-      <if test="password != null">
-        password = #{password,jdbcType=OTHER},
+      <if test="price != null">
+        price = #{price,jdbcType=OTHER},
       </if>
-      <if test="dob != null">
-        dob = #{dob,jdbcType=OTHER},
+      <if test="createDatetime != null">
+        create_datetime = #{createDatetime,jdbcType=OTHER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=OTHER},
       </if>
     </set>
     where id = #{id,jdbcType=OTHER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.mazekkkk.cloud.product.dao.common.SUser">
-    update s_user
+  <update id="updateByPrimaryKey" parameterType="cn.mazekkkk.cloud.product.dao.common.Product">
+    update product
     set name = #{name,jdbcType=OTHER},
-      email = #{email,jdbcType=OTHER},
-      password = #{password,jdbcType=OTHER},
-      dob = #{dob,jdbcType=OTHER}
+      prod_description = #{prodDescription,jdbcType=OTHER},
+      price = #{price,jdbcType=OTHER},
+      create_datetime = #{createDatetime,jdbcType=OTHER},
+      status = #{status,jdbcType=OTHER}
     where id = #{id,jdbcType=OTHER}
   </update>
 </mapper>

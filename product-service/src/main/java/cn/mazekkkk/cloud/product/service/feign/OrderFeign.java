@@ -21,6 +21,6 @@ public interface OrderFeign {
      * @return
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    void insertOrder(@PathVariable("id") Long id);
+    void createOrder(@PathVariable("id") Long id);
 
 }
