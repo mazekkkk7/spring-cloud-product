@@ -1,6 +1,5 @@
 package cn.mazekkkk.cloud.product.service.feign;
 
-import cn.mazekkkk.cloud.product.dao.common.SUser;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +21,6 @@ public interface OrderFeign {
      * @return
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    SUser insertOrder(@PathVariable("id") Long id);
+    void insertOrder(@PathVariable("id") Long id);
 
 }
