@@ -1,9 +1,13 @@
 package cn.mazekkkk.cloud.product.dao.common;
 
+import lombok.Data;
+
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class Product {
+@Data
+public class Product implements Serializable {
     private Integer id;
 
     private String name;

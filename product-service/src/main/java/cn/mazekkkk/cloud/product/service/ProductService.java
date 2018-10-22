@@ -16,4 +16,13 @@ public interface ProductService {
      * @return
      */
     Product selectByPrimaryKey(Integer id);
+
+    /**
+     * 创建订单 根据用户id
+     *
+     * @param memberId 用户id
+     * @return
+     * @throws Exception
+     */
+    Boolean createOrder(Integer memberId);
 }

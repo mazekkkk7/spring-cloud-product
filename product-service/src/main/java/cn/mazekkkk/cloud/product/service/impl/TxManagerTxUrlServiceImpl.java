@@ -1,4 +1,4 @@
-package cn.mazekkkk.cloud.product.common;
+package cn.mazekkkk.cloud.product.service.impl;
 
 import com.codingapi.tx.config.service.TxManagerTxUrlService;
 import org.springframework.beans.factory.annotation.Value;
