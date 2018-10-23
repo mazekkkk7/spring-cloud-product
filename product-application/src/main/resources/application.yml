@@ -2,3 +2,9 @@ server:
   port: 8088
 logging:
   level: com.codingapi=debug
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enable: false

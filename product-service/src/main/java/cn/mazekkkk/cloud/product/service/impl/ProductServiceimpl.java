@@ -59,8 +59,6 @@ public class ProductServiceimpl implements ProductService {
         createOrderCommand.setMemberId(memberId);
         createOrderCommand.setProductList(productList);
         Boolean result = orderFeignClient.createOrder(createOrderCommand);
-        int x = 1 / 0;
-
         return result;
     }
 }
